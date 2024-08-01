@@ -9,6 +9,7 @@
     width:150px
 }
 
+
 .navbarMenu{
     display: flex;
     list-style: none;
@@ -60,6 +61,22 @@
     top:-8px;
     right: -8px;
 }
+
+.navBarProfile{
+    position: relative;
+}
+
+.navProfileDropDown{
+    position: absolute;
+    display:none;
+    right: 0;
+    z-index: 1;
+}
+
+.navProfileDropDown li:hover{
+    color: tomato;
+}
+
 
 @media (max-width: 1050px){
     .navbar .logo{

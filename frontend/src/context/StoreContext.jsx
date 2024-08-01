@@ -4,9 +4,20 @@ import { food_list } from '../assets/assets';
 
 export const FoodContext = createContext();
 
+
+
 export const FoodProvider = ({ children }) => {
+  const url = "http://localhost:4000";
+  const [token, setToken] = useState("");
   const [foodItems, setFoodItems] = useState(food_list);
   const [cartItem, setCartItem] = useState([]);
+  
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      setToken(localStorage.getItem("token"));
+    }
+  }, []);
+
   const getTotalCartAmount = () =>{
       let total = 0;
       for(const item in cartItem){
@@ -29,7 +40,7 @@ export const FoodProvider = ({ children }) => {
   }
 
   return (
-    <FoodContext.Provider value={{ getTotalCartAmount,foodItems,addFoodItem,removeFoodItem,cartItem,setCartItem }}>
+    <FoodContext.Provider value={{ token, setToken,url,getTotalCartAmount,foodItems,addFoodItem,removeFoodItem,cartItem,setCartItem }}>
       {children}
     </FoodContext.Provider>
   );
