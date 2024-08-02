@@ -4,7 +4,7 @@ import './cart.css'
 import { Link } from 'react-router-dom'
 
 const Cart = () => {
-  const { getTotalCartAmount,foodItems,addFoodItem,removeFoodItem,cartItem,setCartItem } = useContext(FoodContext)
+  const { getTotalCartAmount,foodItems,addFoodItem,removeFoodItem,cartItem,setCartItem,url } = useContext(FoodContext)
   return (
     <div className='cart'>
       <div className="cartItems">
@@ -25,7 +25,7 @@ const Cart = () => {
             return(
               <div>
               <div className="cartItemsTitle cartItemsItem">
-                <img src={item.image} alt="" srcset="" />
+                <img src={url + "/images/" + item.image} alt="" srcset="" />
                 <p>{item.name}</p>
                 <p>{item.price}</p>
                 <p>{cartItem[item._id]}</p>
