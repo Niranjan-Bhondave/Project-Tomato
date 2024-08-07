@@ -62,18 +62,41 @@
     right: -8px;
 }
 
-.navBarProfile{
+.navbarProfile{
     position: relative;
 }
 
-.navProfileDropDown{
+.navProfileDropdown{
     position: absolute;
     display:none;
     right: 0;
     z-index: 1;
 }
 
-.navProfileDropDown li:hover{
+.navbarProfile:hover .navProfileDropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff2ef;
+    padding: 12px 25px;
+    border-radius: 4px;
+    border: 1px solid tomato;
+    outline: 2px solid white;
+    list-style: none;
+}
+
+.navProfileDropdown li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.navProfileDropdown img{
+    width: 20px;
+}
+
+.navProfileDropdown li:hover{
     color: tomato;
 }
 

@@ -1,6 +1,5 @@
 // context/StoreContext.jsx
 import React, { createContext, useEffect, useState } from "react";
-import { food_list } from '../assets/assets';
 import axios from "axios";
 
 export const FoodContext = createContext();
@@ -26,7 +25,7 @@ export const FoodProvider = ({ children }) => {
     loadData();
   }, []);
 
-
+  
 
   const getTotalCartAmount = () =>{
       let total = 0;
@@ -41,12 +40,15 @@ export const FoodProvider = ({ children }) => {
     }
     
   
-  const addFoodItem = (_id) => {
-    (!cartItem[_id]) ? setCartItem((prev) => ({...prev,[_id]:1})) : setCartItem((prev) => ({...prev,[_id]:cartItem[_id]+1}))
+  const addFoodItem = async(itemId) => {
+    (!cartItem[itemId]) ? setCartItem((prev) => ({...prev,[itemId]:1})) : setCartItem((prev) => ({...prev,[itemId]:prev[itemId]+1}))
+    if(token)await axios.post(url + "/api/cart/add", {itemId}, {headers: {token}});
+    
   }
 
-  const removeFoodItem = (_id) => {
-    setCartItem((prev) => ({...prev,[_id]:cartItem[_id]-1}))
+  const removeFoodItem = async(itemId) => {
+    setCartItem((prev) => ({...prev,[itemId]:prev[itemId]-1}))
+    if(token)await axios.post(url + "/api/cart/remove", {itemId}, {headers: {token}});
   }
 
   return (
