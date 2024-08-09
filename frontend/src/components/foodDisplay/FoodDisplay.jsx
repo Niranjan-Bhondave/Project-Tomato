@@ -4,7 +4,7 @@ import  FoodItem  from '../foodItem/FoodItem.jsx';
 import { FoodContext } from '../../context/StoreContext.jsx';
 
 const FoodDisplay = ({category}) => {
-  const [itemCount,setItemCount] = useState(0);
+
   const {foodItems,addFoodItem,removeFoodItem,cartItem,setCartItem} = useContext(FoodContext);
   return (
     <div className='foodDisplay' id='foodDisplay'>
@@ -12,7 +12,7 @@ const FoodDisplay = ({category}) => {
        <div className="foodDisplayList">
           {
             foodItems.map((item,index) => {
-              if(category === 'All' || item.category === category)return <FoodItem id = {item._id} name = {item.name} description={item.description} price={item.price} image={item.image} />
+              if(category === 'All' || item.category === category)return <FoodItem key = {item._id} itemId = {item._id} name = {item.name} description={item.description} price={item.price} image={item.image} />
             })
           }
         </div>  
