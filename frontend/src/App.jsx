@@ -9,7 +9,7 @@ import { FoodProvider } from './context/StoreContext';
 import Footer from './components/footer/Footer';
 import LoginPopUp from './components/loginPopUp/LoginPopUp';
 import Verify from './pages/verify/Verify';
-
+import MyOrders from './pages/myOrders/MyOrders';
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -25,6 +25,7 @@ const App = () => {
           <Route path='/cart' element={<Cart />} />
           <Route path='/placeOrder' element={<PlaceOrder />} />
           <Route path='/verify' element = {<Verify />}/>
+          <Route path='/myorders' element = {<MyOrders />}/>
         </Routes>
       </div>
     </FoodProvider>

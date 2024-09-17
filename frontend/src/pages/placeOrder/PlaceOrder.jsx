@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './placeOrder.css'
 import { FoodContext } from '../../context/StoreContext'
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 const PlaceOrder = () => {
   const {getTotalCartAmount, token, foodItems, cartItem,url} = useContext(FoodContext)
   const [data,setData] = useState({
@@ -46,6 +47,12 @@ const PlaceOrder = () => {
       alert("Order failed. Please try again");
   }
 }
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(!token)navigate('/')
+    else if(getTotalCartAmount === 0)navigate('/cart')
+  })
+
   return (
     <form className='placeOrder' onSubmit={placeOrder}>
       <div className="placeOrderLeft">

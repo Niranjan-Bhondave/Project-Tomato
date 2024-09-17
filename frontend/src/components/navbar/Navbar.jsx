@@ -15,7 +15,7 @@ const Navbar = ({setShowLogin}) => {
     localStorage.removeItem("token");
     setToken(null);
     navigate('/');
-  }
+  } 
 
   return (
     <div className='navbar'>
@@ -36,7 +36,7 @@ const Navbar = ({setShowLogin}) => {
         <div className='navbarProfile'>
               <img src={assets.profile_icon} alt="" />
               <ul className='navProfileDropdown'>
-                <li><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
+                <li onClick={() => navigate('/myorders')}><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
                 <hr />
                 <li onClick={logOut}> <img src={assets.logout_icon} alt="" /><p>Log Out</p></li>
               </ul>
